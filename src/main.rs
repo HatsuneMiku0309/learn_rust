@@ -4,10 +4,11 @@ mod stdin_demo;
 mod guess_demo;
 #[allow(dead_code)]
 mod first_word;
+
 #[allow(dead_code)]
 mod match_demo;
 
-
+// use match_demo::*;
 // use match_demo::enum_demo;
 // use match_demo::match_demos;
 // use match_demo::if_let;
@@ -16,12 +17,20 @@ mod match_demo;
 use crate::match_demo::{
     enum_demo,
     match_demos,
-    if_let
+    if_let1 as if_let
+};
+
+#[allow(dead_code)]
+mod mysql_demo;
+#[allow(dead_code)]
+#[allow(unused_imports)]
+use crate::mysql_demo::{
+    conn_demo
 };
 
 fn main() {
-    // let heart_eyed_cat = '😻';
-    // println!("[{FILE_NAME}][x] :: {}", heart_eyed_cat);
+    let heart_eyed_cat = '😻';
+    println!("Run [{FILE_NAME}] say miao~~~ {} \n", heart_eyed_cat);
 
     // stdin_demo::stdin();
     // guess_demo::comparing_the_guess_to_the_secret_number();
@@ -59,15 +68,20 @@ fn main() {
     //     println!("[{FILE_NAME}][x] :: six: {:?}, w: {:?}", six, w);
     // }
 
+    // {
+    //     if_let::if_let_demo(3);
+    //     if_let::if_let_demo_simple(4);
+    //     let mut input = match_demos::Coin::Quarter(match_demos::UsState::Taiwan);
+    //     let mut input2 = match_demos::Coin::Penny;
+    //     let result = if_let::if_let_demo_simple2(&mut input);
+    //     println!("[{FILE_NAME}][x] :: input: {:?}, result: {}", input, result);
+    //     let result2 = if_let::if_let_demo_simple2(&mut input2);
+    //     println!("[{FILE_NAME}][x] :: input2: {:?}, result2: {}", input2, result2);
+    // }
+
     {
-        if_let::if_let_demo(3);
-        if_let::if_let_demo_simple(4);
-        let mut input = match_demos::Coin::Quarter(match_demos::UsState::Taiwan);
-        let mut input2 = match_demos::Coin::Penny;
-        let result = if_let::if_let_demo_simple2(&mut input);
-        println!("[{FILE_NAME}][x] :: input: {:?}, result: {}", input, result);
-        let result2 = if_let::if_let_demo_simple2(&mut input2);
-        println!("[{FILE_NAME}][x] :: input2: {:?}, result2: {}", input2, result2);
+        let qaq = conn_demo::mysql_conn_demo();
+        println!("{:#?}", qaq);
     }
 }
 
