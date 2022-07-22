@@ -28,6 +28,14 @@ use crate::mysql_demo::{
     conn_demo
 };
 
+#[allow(dead_code)]
+mod collections_demo;
+#[allow(dead_code)]
+#[allow(unused_imports)]
+use collections_demo:: {
+    vec_demo
+};
+
 fn main() {
     let heart_eyed_cat = '😻';
     println!("Run [{FILE_NAME}] say miao~~~ {} \n", heart_eyed_cat);
