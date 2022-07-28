@@ -47,11 +47,12 @@ pub fn read_vec_elem() {
 }
 
 
-fn iterating_over_the_values_in_vector() {
+pub fn iterating_over_the_values_in_vector() {
     let mut v = vec![100, 32, 57];
     for i in &mut v {
         *i += 50;
     }
+    println!("[{FILE_NAME}][55] :: {:?}", v);
 }
 
 

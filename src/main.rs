@@ -33,7 +33,8 @@ mod collections_demo;
 #[allow(dead_code)]
 #[allow(unused_imports)]
 use collections_demo:: {
-    vec_demo
+    vec_demo,
+    string_demo
 };
 
 fn main() {
@@ -87,10 +88,20 @@ fn main() {
     //     println!("[{FILE_NAME}][x] :: input2: {:?}, result2: {}", input2, result2);
     // }
 
+    // {
+    //     let qaq = conn_demo::mysql_conn_demo();
+    //     println!("{:#?}", qaq);
+    // }
+
     {
-        let qaq = conn_demo::mysql_conn_demo();
-        println!("{:#?}", qaq);
+        vec_demo::iterating_over_the_values_in_vector();
+        string_demo::create_string_demo();    
+        string_demo::add_string_oper();
+        string_demo::add_string_fun();
+        string_demo::add_string_multi_oper();
+        string_demo::add_string_multi_format();
     }
+    
 }
 
 static FILE_NAME: &str = "main.rs";
