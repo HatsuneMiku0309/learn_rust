@@ -67,7 +67,25 @@ pub fn indexing_into_string() {
                 З: 208 151 (2 bytes)
      */ 
     
-    // let h = s1[0];
+    // let h = s1[0]; // error!!
+    println!("[{FILE_NAME}][71] :: {}", &s1[..1]);
 }
+
+
+pub fn iterating_over_string() {
+    let s = "नमस्ते";
+    // 其中 '्' 以及 'े' , 第四個和第六個卻不是字母，它們是單獨存在不具任何意義的變音符號
+    println!("[{FILE_NAME}][78] :: char: ");
+    for c in s.chars() {
+        print!("{}  ", c);
+    }
+
+    println!("[{FILE_NAME}][83] :: byte: ");
+    for b in s.bytes() {
+        print!("{}  ", b);
+    }
+    println!("");
+}
+
 
 static FILE_NAME: &str = "collections_demo/string_demo.rs";

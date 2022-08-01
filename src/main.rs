@@ -34,7 +34,16 @@ mod collections_demo;
 #[allow(unused_imports)]
 use collections_demo:: {
     vec_demo,
-    string_demo
+    string_demo,
+    hashmap_demo
+};
+
+#[allow(dead_code)]
+mod error_demo;
+#[allow(dead_code)]
+#[allow(unused_imports)]
+use error_demo:: {
+    index as err_demo
 };
 
 fn main() {
@@ -93,13 +102,28 @@ fn main() {
     //     println!("{:#?}", qaq);
     // }
 
+    // {
+    //     vec_demo::iterating_over_the_values_in_vector();
+    //     string_demo::create_string_demo();    
+    //     string_demo::add_string_oper();
+    //     string_demo::add_string_fun();
+    //     string_demo::add_string_multi_oper();
+    //     string_demo::add_string_multi_format();
+    //     string_demo::indexing_into_string();
+    //     string_demo::iterating_over_string();
+    //     hashmap_demo::new_hashmap();
+    //     hashmap_demo::vec_to_hashmap();
+    //     hashmap_demo::get_hashmap();
+    //     hashmap_demo::cover_hashmap_value();
+    //     hashmap_demo::only_insert_value_if_key_no_value();
+    //     hashmap_demo::update_old_value();
+    // }
+
     {
-        vec_demo::iterating_over_the_values_in_vector();
-        string_demo::create_string_demo();    
-        string_demo::add_string_oper();
-        string_demo::add_string_fun();
-        string_demo::add_string_multi_oper();
-        string_demo::add_string_multi_format();
+        // err_demo::get_file_demo("hello.txt");
+        // err_demo::get_file_match_on_diff_error("hello.txt");
+        err_demo::get_file_use_unwrap_or_else("hello2.txt");
+        err_demo::get_file_use_unwrap_or_expect("hello.txt");
     }
     
 }
