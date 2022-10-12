@@ -8,11 +8,13 @@ mod first_word;
 #[allow(dead_code)]
 mod match_demo;
 
+use std::collections::HashMap;
+use std::vec;
+
 // use match_demo::*;
 // use match_demo::enum_demo;
 // use match_demo::match_demos;
 // use match_demo::if_let;
-#[allow(dead_code)]
 #[allow(unused_imports)]
 use crate::match_demo::{
     enum_demo,
@@ -22,7 +24,6 @@ use crate::match_demo::{
 
 #[allow(dead_code)]
 mod mysql_demo;
-#[allow(dead_code)]
 #[allow(unused_imports)]
 use crate::mysql_demo::{
     conn_demo
@@ -30,7 +31,6 @@ use crate::mysql_demo::{
 
 #[allow(dead_code)]
 mod collections_demo;
-#[allow(dead_code)]
 #[allow(unused_imports)]
 use collections_demo:: {
     vec_demo,
@@ -40,10 +40,42 @@ use collections_demo:: {
 
 #[allow(dead_code)]
 mod error_demo;
-#[allow(dead_code)]
 #[allow(unused_imports)]
 use error_demo:: {
     index as err_demo
+};
+
+#[allow(dead_code)]
+mod generic_data_demo;
+#[allow(unused_imports)]
+use generic_data_demo:: {
+    generic_demo,
+    trait_demo
+};
+
+#[allow(dead_code)]
+mod closures_demo;
+#[allow(unused_imports)]
+use closures_demo:: {
+    iterator,
+    improving_io
+};
+
+#[allow(dead_code)]
+mod smart_point_demo;
+#[allow(unused_imports)]
+use smart_point_demo:: {
+    box_demo,
+    deref_demo,
+    drop_demo,
+    rc_demo
+};
+
+#[allow(dead_code)]
+mod good_test;
+#[allow(unused_imports)]
+use good_test:: {
+    my_test
 };
 
 fn main() {
@@ -119,13 +151,109 @@ fn main() {
     //     hashmap_demo::update_old_value();
     // }
 
+    // {
+    //     // err_demo::get_file_demo("hello.txt");
+    //     // err_demo::get_file_match_on_diff_error("hello.txt");
+    //     err_demo::get_file_use_unwrap_or_else("hello2.txt");
+
+    //     // this go fail. when no found file
+    //     // err_demo::get_file_use_unwrap_or_expect("hello.txt");
+    //     // let _s = match err_demo::shortcut_for_propagating_error("hello.txt") {
+    //     //     Ok(data) => data,
+    //     //     Err(e) => {
+    //     //         println!("[{FILE_NAME}][132] :: error: {:?}", e);
+    //     //         panic!("fail {}", e)
+    //     //     }
+    //     // };
+    //     let _s = match err_demo::shortcut_for_propagating_error("hello2.txt") {
+    //         Ok(file) => file,
+    //         Err(e) => panic!("{}", e)
+    //     };
+    //     println!("{}", _s);
+
+    //     err_demo::check_guess(20);
+    // }
+
+    // {
+    //     // generic_demo::generic_point();
+    //     // generic_demo:: mixup_demo();
+
+    //     let tweet = trait_demo::Tweet {
+    //         username: String::from("horse_ebooks"),
+    //         content: String::from("off course, as you probably already know, people"),
+    //         reply: false,
+    //         retweet: false,
+    //     };
+
+    //     println!("1 則新推文：{}", tweet.summaryize());
+
+    //     let article = trait_demo::NewsArticle {
+    //         headline: String::from("Penguins win the Stanley Cup Championship!"),
+    //         location: String::from("Pittsburgh, PA, USA"),
+    //         author: String::from("Iceburgh"),
+    //         content: String::from(
+    //             "The Pittsburgh Penguins once again are the best \
+    //              hockey team in the NHL."
+    //         ),
+    //     };
+
+    //     println!("有新文章發佈！{}", article.summaryize());
+
+    //     trait_demo::notify(&article);
+    //     trait_demo::notify(&tweet);
+    //     trait_demo::generic_notify(&article);
+    //     trait_demo::generic_notify(&tweet);
+
+    //     // trait_demo::mul_generic_notify(&article); the struct is not (Summary + Display) trait, should error
+    //     trait_demo::mul_generic_notify(&tweet);
+    //     trait_demo::where_mul_generic_notify(&tweet);
+
+    //     let tweet2 = trait_demo::returns_summarizable();
+    //     println!("returns_summarizable: {}", tweet2.display());
+    // }
+
+    // {
+    //     // iterator::use_closure_get();
+    //     // iterator::calling_next_directly();
+    //     // iterator::using_other_iterator_trait_methods();
+    //     let config = improving_io::set_args_in_config();
+    //     println!("config: {:?}", config);
+    // }
+
+    // {
+    //     box_demo::create_box();
+    //     box_demo::create_list();
+    //     deref_demo::normal_deref();
+    //     deref_demo::box_deref();
+    //     deref_demo::mybox_deref();
+    //     deref_demo::mybox_deref_implicit_deref_coercions_with_functions_and_methods();
+    //     drop_demo::drop_demo();
+        
+    // }
+
     {
-        // err_demo::get_file_demo("hello.txt");
-        // err_demo::get_file_match_on_diff_error("hello.txt");
-        err_demo::get_file_use_unwrap_or_else("hello2.txt");
-        err_demo::get_file_use_unwrap_or_expect("hello.txt");
+        // my_test::unwrap_options();
     }
-    
+
+    let a = vec![2, 7, 11, 15];
+    let qaq = two_sum(a, 9);
+    println!("qaq: {:?}", qaq);
 }
 
 static FILE_NAME: &str = "main.rs";
+
+fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
+    let mut m: HashMap<i32, i32> = HashMap::new();
+    for (i,&v) in nums.iter().enumerate() {
+        let target_v = target - v;
+        // println!("target_v {}, {}", target_v, m.contains_key(&target_v));
+        if m.contains_key(&target_v) {
+            return vec![m[&target_v], i as i32];
+        }
+        else {
+            m.insert(v, i as i32);    
+        }
+        
+    }
+    return vec![0,0];
+}
