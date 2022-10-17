@@ -8,8 +8,8 @@ mod first_word;
 #[allow(dead_code)]
 mod match_demo;
 
-use std::collections::HashMap;
-use std::vec;
+// use std::collections::HashMap;
+// use std::vec;
 
 // use match_demo::*;
 // use match_demo::enum_demo;
@@ -70,6 +70,14 @@ use smart_point_demo:: {
     drop_demo,
     rc_demo
 };
+
+#[allow(dead_code)]
+mod web_demo;
+#[allow(unused_imports)]
+use web_demo:: {
+    single_tcp
+};
+
 
 #[allow(dead_code)]
 mod good_test;
@@ -231,29 +239,35 @@ fn main() {
         
     // }
 
+
+    {
+        // single_tcp::web_s();
+        single_tcp::web_m();
+    }
+
     {
         // my_test::unwrap_options();
     }
 
-    let a = vec![2, 7, 11, 15];
-    let qaq = two_sum(a, 9);
-    println!("qaq: {:?}", qaq);
+    // let a = vec![2, 7, 11, 15];
+    // let qaq = two_sum(a, 9);
+    // println!("qaq: {:?}", qaq);
 }
 
 static FILE_NAME: &str = "main.rs";
 
-fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
-    let mut m: HashMap<i32, i32> = HashMap::new();
-    for (i,&v) in nums.iter().enumerate() {
-        let target_v = target - v;
-        // println!("target_v {}, {}", target_v, m.contains_key(&target_v));
-        if m.contains_key(&target_v) {
-            return vec![m[&target_v], i as i32];
-        }
-        else {
-            m.insert(v, i as i32);    
-        }
+// fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
+//     let mut m: HashMap<i32, i32> = HashMap::new();
+//     for (i,&v) in nums.iter().enumerate() {
+//         let target_v = target - v;
+//         // println!("target_v {}, {}", target_v, m.contains_key(&target_v));
+//         if m.contains_key(&target_v) {
+//             return vec![m[&target_v], i as i32];
+//         }
+//         else {
+//             m.insert(v, i as i32);    
+//         }
         
-    }
-    return vec![0,0];
-}
+//     }
+//     return vec![0,0];
+// }
